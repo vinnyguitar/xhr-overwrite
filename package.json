@@ -1,0 +1,25 @@
+{
+  "name": "xhr-wrap",
+  "version": "1.0.0",
+  "description": "Wrap xhr",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/mocha/bin/mocha test/unit.js",
+    "e2e": "node_modules/karma/bin/karma start karma.conf.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "browserify": "^13.0.0",
+    "jquery": "1.12.3",
+    "karma": "^0.13.22",
+    "karma-browserify": "^5.0.4",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-ie-launcher": "^0.2.0",
+    "karma-mocha": "^0.2.2",
+    "mocha": "^2.4.5",
+    "should": "^8.3.1",
+    "watchify": "^3.7.0"
+  }
+}
