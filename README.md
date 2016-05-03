@@ -23,3 +23,6 @@ xhrOverwrite(options)为一全局方法，可在options中指定需要重写的�
 
 ### 兼容性
 兼容chrome、ff、safari和ie6+。
+
+## License
+MIT:[http://vinnyguitar.mit-license.org]()

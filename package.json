@@ -4,9 +4,14 @@
   "description": "This lib offers interface to overwrite xhr.",
   "main": "index.js",
   "author": "vinnyguitar@126.com",
+  "scripts": {
+    "test": "node_modules/mocha/bin/mocha test/unit.js",
+    "e2e": "node_modules/karma/bin/karma start karma.conf.js",
+    "dist": "rm -rf dist;mkdir dist;node_modules/uglify-js/bin/uglifyjs index.js --compress --mangle --output dist/xhr-overwrite.min.js"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/angular/angular.js.git"
+    "url": "https://github.com/vinnyguitar/xhr-overwrite"
   },
   "license": {
     "type": "MIT",
