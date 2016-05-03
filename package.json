@@ -1,15 +1,17 @@
 {
-  "name": "xhr-wrap",
+  "name": "xhr-overwrite",
   "version": "1.0.0",
-  "description": "Wrap xhr",
+  "description": "This lib offers interface to overwrite xhr.",
   "main": "index.js",
-  "scripts": {
-    "test": "node_modules/mocha/bin/mocha test/unit.js",
-    "e2e": "node_modules/karma/bin/karma start karma.conf.js"
+  "author": "vinnyguitar@126.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/angular/angular.js.git"
   },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {},
+  "license": {
+    "type": "MIT",
+    "url": "http://vinnyguitar.mit-license.org"
+  },
   "devDependencies": {
     "body-parser": "^1.15.0",
     "browserify": "^13.0.0",
@@ -22,6 +24,7 @@
     "mocha": "^2.4.5",
     "raw-body": "^2.1.6",
     "should": "^8.3.1",
+    "uglify-js": "^2.6.2",
     "watchify": "^3.7.0"
   }
 }

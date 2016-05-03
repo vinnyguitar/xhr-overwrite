@@ -1,3 +1,7 @@
+/**
+ * xhr overwrite
+ * mit
+ */
 var overwriteXhr = (function () {
     var CB_REG = /^on[a-z]+$/;
     var CST_REG = /^[A-Z]+$/;

@@ -1,4 +1,11 @@
 var overwriteXhr = require('../index');
+
+function ok(left, right, message) {
+    if (left !== right) {
+        throw new Error(message || 'not equal exception');
+    }
+};
+
 overwriteXhr({
     open: function (method, url, asynchronous) {
         var arr = url.split('?');
@@ -19,12 +26,6 @@ overwriteXhr({
     }
 });
 var jQuery = require('jquery');
-
-function ok(left, right, message) {
-    if (left !== right) {
-        throw new Error(message || 'not equal exception');
-    }
-};
 
 it('should use post method', function (done) {
     jQuery.get('/return/request/method')
