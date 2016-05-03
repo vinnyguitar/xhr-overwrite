@@ -1,40 +1,43 @@
-var should = require('should');
-var overwriteXhr = require('../index');
-/* mock */
-window = {};
-window.XMLHttpRequest = function () {
-    this.DONE = 4;
-    this.timeout = 0;
-    this.abort = function() {
-        return 'XMLHttpRequest.abort';
-    };
-    this.open = function () {
-        return 'XMLHttpRequest.open';
-    };
-    this.send = function () {
-        return 'XMLHttpRequest.send';
-    };
-    this.readyState = 0;
-    this.onreadystatechange = null;
-    this.mockReadStateChange = function (state) {
-        this.readyState = state;
-        if (this.onreadystatechange) {
-            this.onreadystatechange();
+require('should');
+
+var overwriteXhr,
+    methods = {
+        open: function () {
+            return this.xhr.open();
+        },
+        send: function () {
+            return this.xhr.send();
         }
     };
-};
 
-var xhr = new window.XMLHttpRequest();
-var methods = {
-    open: function () {
-        return this.xhr.open();
-    },
-    send: function () {
-        return this.xhr.send();
-    }
-};
-overwriteXhr(methods);
-var overwriteXhr = new window.XMLHttpRequest();
+before(function () {
+    /* mock global environment */
+    window = {};
+    window.XMLHttpRequest = function () {
+        this.DONE = 4;
+        this.timeout = 0;
+        this.abort = function () {
+            return 'XMLHttpRequest.abort';
+        };
+        this.open = function () {
+            return 'XMLHttpRequest.open';
+        };
+        this.send = function () {
+            return 'XMLHttpRequest.send';
+        };
+        this.readyState = 0;
+        this.onreadystatechange = null;
+        this.mockReadStateChange = function (state) {
+            this.readyState = state;
+            if (this.onreadystatechange) {
+                this.onreadystatechange();
+            }
+        };
+    };
+    /* overwrite */
+    require('../index')(methods);
+    overwriteXhr = new window.XMLHttpRequest();
+});
 
 it('should copy method', function () {
     overwriteXhr.open.should.equal(methods.open);
@@ -56,9 +59,12 @@ it('should copy const', function () {
     overwriteXhr.DONE.should.equal(4);
 });
 
-it('should proxy callback', function () {
+it('should proxy callback', function (done) {
     overwriteXhr.onreadystatechange = function () {
         this.readyState.should.equal(2);
+        done();
     };
-    overwriteXhr.xhr.mockReadStateChange(2);
+    setTimeout(function () {
+        overwriteXhr.xhr.mockReadStateChange(2);
+    }, 500);
 });

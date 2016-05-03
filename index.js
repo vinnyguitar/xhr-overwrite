@@ -168,12 +168,12 @@ var overwriteXhr = (function () {
         if (XHR) {
             return new XHR();
         } else {
-            var msxml = ['Msxml2.XMLHTTP.6.0'
-                , 'Msxml2.XMLHTTP.3.0'
-                , 'Msxml2.XMLHTTP.4.0'
-                , 'Msxml2.XMLHTTP.5.0'
-                , 'MSXML2.XMLHTTP'
-                , 'Microsoft.XMLHTTP'];
+            var msxml = ['Msxml2.XMLHTTP.6.0',
+                'Msxml2.XMLHTTP.3.0',
+                'Msxml2.XMLHTTP.4.0',
+                'Msxml2.XMLHTTP.5.0',
+                'MSXML2.XMLHTTP',
+                'Microsoft.XMLHTTP'];
             for (var i = 0; i < msxml.length; i++) {
                 try {
                     return new ActiveXObject(msxml[i]);
@@ -185,6 +185,6 @@ var overwriteXhr = (function () {
     }
 })();
 
-if (typeof (exports) != 'undefined') {
+if (typeof module === 'object' && typeof module.exports === 'object') {
     module.exports = overwriteXhr;
 }

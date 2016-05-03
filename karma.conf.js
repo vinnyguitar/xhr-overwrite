@@ -1,15 +1,19 @@
-var CustomMiddlewareFactory = function (config) {
-    return function (request, response, next) {
-        if(request.url === '/return/request/method') {
-            response.writeHead(200);
-            return response.end(request.method);
-        } else {
-            next();
-        }
+var getRawBody = require('raw-body');
+var MockMiddleware = function (request, response, next) {
+    if (request.url === '/return/request/method') {
+        response.writeHead(200);
+        response.end(request.method);
+    } else if (request.url === '/return/request/body') {
+        response.writeHead(200);
+        getRawBody(request, {encoding: 'utf8'}, function(err, res) {
+            response.end(res);
+        });
+    } else {
+        next();
     }
 };
 
-module.exports = function(config) {
+module.exports = function (config) {
     config.set({
         frameworks: ['mocha', 'browserify'],
         files: [
@@ -25,13 +29,13 @@ module.exports = function(config) {
         autoWatch: true,
         browsers: ['Chrome'],
         singleRun: false,
-        middleware: ['custom'],
+        middleware: ['mock'],
         plugins: [
             'karma-browserify',
             'karma-chrome-launcher',
             'karma-ie-launcher',
             'karma-mocha',
-            {'middleware:custom': ['factory', CustomMiddlewareFactory]}
+            {'middleware:mock': ['value', MockMiddleware]}
         ]
     });
 };

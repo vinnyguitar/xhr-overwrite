@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
+    "body-parser": "^1.15.0",
     "browserify": "^13.0.0",
     "jquery": "1.12.3",
     "karma": "^0.13.22",
@@ -19,6 +20,7 @@
     "karma-ie-launcher": "^0.2.0",
     "karma-mocha": "^0.2.2",
     "mocha": "^2.4.5",
+    "raw-body": "^2.1.6",
     "should": "^8.3.1",
     "watchify": "^3.7.0"
   }
