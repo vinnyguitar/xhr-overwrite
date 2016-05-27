@@ -1,6 +1,6 @@
 {
   "name": "xhr-overwrite",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This lib offers interface to overwrite xhr.",
   "main": "index.js",
   "author": "vinnyguitar@126.com",

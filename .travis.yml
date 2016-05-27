@@ -1,0 +1,7 @@
+language: node_js
+node_js:
+  - "4"
+before_script:
+  - npm install
+after_script:
+  - ./node_modules/mocha/bin/mocha test/unit.js ./node_modules/mocha/bin/mocha test/e2e.js
