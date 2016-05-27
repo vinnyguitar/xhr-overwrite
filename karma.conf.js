@@ -33,6 +33,7 @@ module.exports = function (config) {
         plugins: [
             'karma-browserify',
             'karma-chrome-launcher',
+            'karma-firefox-launcher',
             'karma-ie-launcher',
             'karma-mocha',
             {'middleware:mock': ['value', MockMiddleware]}
