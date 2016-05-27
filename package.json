@@ -1,7 +1,8 @@
 {
   "name": "xhr-overwrite",
   "version": "1.0.1",
-  "description": "This lib offers interface to overwrite xhr.",
+  "description": "A lib that offers interfaces to overwrite xhr.It can used as interceptor for ajax in the underlayer.",
+  "keywords": ["XMLHttpRequest", "ajax", "interceptor", "overwrite"],
   "main": "index.js",
   "author": "vinnyguitar@126.com",
   "scripts": {
